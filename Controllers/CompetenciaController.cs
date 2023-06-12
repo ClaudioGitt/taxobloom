@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAppBloom.Models;
+using WebAppBloom.Controllers;
+using WebAppBloom.ViewModels;
+
 
 
 namespace WebAppBloom.Controllers;
-
-
 public class CompetenciaController:Controller
 {
     
@@ -17,5 +18,21 @@ public class CompetenciaController:Controller
         ViewData["tablebloom"]=competencia;
         return View();
     }
-    
+    public IActionResult RelatorioCompe()
+    {
+    var Competencia=new Competencia()
+    {
+
+        ColunaBloom="Teste Coluna",
+        LinhaBloom="Teste Linha"
+    };
+    var viewModel = new DetalhesCompViewModel()
+    {
+        Competencia=Competencia,
+        TituloPagina=" Pagina de teste "
+    };
+    return View( viewModel);
+    }
 }
+
+
